@@ -1,0 +1,113 @@
+---
+layout: default
+---
+
+<a href="/" style="color:white"><i><-- Go Back</i></a>
+
+<h1>{{ page.charname }}</h1>
+
+Species: {{ page.species }}
+
+{% if page.specialnote %}
+<br><br><b style="color:red;">{{ page.specialnote }}</b>
+{% endif %}
+
+<br><hr><br>
+
+<h2>Reference</h2>
+
+{% for image in site.static_files %}
+{% assign pstring = "assets/images/refs/" | append: page.charpath | append: "/sfw"  %}
+  {% if image.path contains pstring %}
+  {% unless image.path contains 'hide.' %}
+  <a href="{{ image.path }}" target="_blank" style="color:white;">
+    <img src="{{ image.path }}" alt="{{ page.title }}" width=50%>
+    <br><i>Click to view full SFW reference</i></a>
+  {% endunless %}
+  {% endif %}
+{% endfor %}
+{% if page.nsfwrefimg %}
+
+{% for image in site.static_files %}
+{% assign pstring = "assets/images/refs/" | append: page.charpath | append: "/nsfw"  %}
+  {% if image.path contains pstring %}
+  {% unless image.path contains 'hide.' %}
+  | <a href="{{ image.path }}" target="_blank" style="color:white;">
+    <!--<img src="{{ image.path }}" alt="{{ page.title }}" width=50%>-->
+    <i>Click to view full NSFW reference</i></a>
+  {% endunless %}
+  {% endif %}
+{% endfor %}
+
+{% endif %}
+
+<br><br><br>
+
+<h2>Art of {{page.charname}}</h2>
+
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#sfw" role="button" aria-expanded="false" aria-controls="collapseExample">
+        SFW
+    </a>
+    {% if page.shownsfw %}
+    <a class="btn btn-primary" data-toggle="collapse" href="#nsfw" role="button" aria-expanded="false" aria-controls="collapseExample">
+        NSFW
+    </a>
+    {% endif %}
+</p>
+
+<div class="collapse" id="sfw">
+    {% for image in site.static_files %}
+    {% assign pstring = "assets/images/art/" | append: page.charpath | append: "/sfw"  %}
+        {% if image.path contains pstring %}
+        {% unless image.path contains 'hide.' or image.path contains '.swf' %}
+        {% assign pp = image.path | replace: '[', '%5B' | replace: ']', '%5D' %}
+        
+        {% assign artistSTR = 'Artist Link Error!`' | split:'`' %}
+        
+        {% if image.path contains '[FA]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://furaffinity.net/user/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
+        {% if image.path contains '[Twitter]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://twitter.com/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
+        
+        <a href="{{ pp }}" target="_blank"><img width=250em src="{{ pp }}"></a><br>by {{ artistSTR }}<br><br><br>
+        {% endunless %}
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% if page.shownsfw %}
+<div class="collapse" id="nsfw">
+    {% for image in site.static_files %}
+    {% assign pstring = "assets/images/art/" | append: page.charpath | append: "/nsfw"  %}
+        {% if image.path contains pstring %}
+        {% unless image.path contains 'hide.' or image.path contains '.swf' %}
+        {% assign pp = image.path | replace: '[', '%5B' | replace: ']', '%5D' %}
+        
+        {% assign artistSTR = 'Artist Link Error!`' | split:'`' %}
+        
+        {% if image.path contains '[FA]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://furaffinity.net/user/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
+        {% if image.path contains '[Twitter]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://twitter.com/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
+        
+        <a href="{{ pp }}" target="_blank"><img width=250em src="{{ pp }}"></a><br>by {{ artistSTR }}<br><br><br>
+        {% endunless %}
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<br><br><br><br>
