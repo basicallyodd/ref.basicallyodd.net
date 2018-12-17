@@ -75,6 +75,16 @@ Species: {{ page.species }}
         {% assign artistSTR = '<a href="https://twitter.com/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
         {% endif %}
 
+        {% if image.path contains '[Tumblr]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://' | append: artistSTRname[0] | append: '.tumblr.com/" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
+        {% if image.path contains '[Instagram]' %}
+        {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+        {% assign artistSTR = '<a href="https://instagram.com/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+        {% endif %}
+
         
         <a href="{{ pp }}" target="_blank"><img width=250em src="{{ pp }}"></a><br>by {{ artistSTR }}<br><br><br>
         {% endunless %}
