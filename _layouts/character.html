@@ -42,7 +42,11 @@ Species: {{ page.species }}
 {% endif %}
 
 {% if page.original-owner %}
-<p>Original Owner: {{page.original-owner}}</p>
+<p>Original Owner: {{page.original-owner}}</p> <br><br>
+{% endif %}
+
+{% if page.notes %}
+<h1>Notes</h1>: <p>{{page.notes}}</p> <br><br>
 {% endif %}
 
 <br><br><br>
