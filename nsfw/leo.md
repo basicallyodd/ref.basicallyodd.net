@@ -5,6 +5,6 @@ charname: Léo
 title: Léo
 species: Ferret
 nsfwrefimg: false
-shownsfw: false
+shownsfw: True
 ---
 

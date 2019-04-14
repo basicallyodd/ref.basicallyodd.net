@@ -5,6 +5,6 @@ charpath: astra
 title: Astra
 species: Rabbit
 nsfwrefimg: false
-shownsfw: false
+shownsfw: True
 ---
 

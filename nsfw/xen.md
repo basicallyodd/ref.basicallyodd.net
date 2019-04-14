@@ -5,6 +5,6 @@ charpath: xen
 title: Xen
 species: Husky (Canine)
 nsfwrefimg: false
-shownsfw: false
+shownsfw: True
 ---
 

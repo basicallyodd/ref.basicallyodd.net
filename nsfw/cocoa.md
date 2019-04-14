@@ -4,7 +4,7 @@ charname: Cocoa
 charpath: cocoa
 title: Cocoa
 species: Monkey
-nsfwrefimg: false
-shownsfw: fals
+nsfwrefimg: True
+shownsfw: True
 ---
 
