@@ -54,14 +54,17 @@ Species: {{ page.species }}
 <h2>Art of {{page.charname}}</h2>
 
 <p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#sfw" role="button" aria-expanded="false" aria-controls="collapseExample">
+        SFW
+    </a>
     {% if page.shownsfw %}
     <a class="btn btn-primary" data-toggle="collapse" href="#nsfw" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Toggle NSFW
+        NSFW
     </a>
     {% endif %}
 </p>
 
-<div>
+<div class="collapse" id="sfw">
     {% for image in site.static_files %}
     {% assign pstring = "assets/images/art/" | append: page.charpath | append: "/sfw"  %}
         {% if image.path contains pstring %}
