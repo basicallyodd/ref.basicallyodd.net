@@ -9,6 +9,10 @@ layout: default
 <h1>basicallyodd's Characters</h1>
 
 <div class="row">
+  <a href="/whatsnew/"><h3>Want to see what's new? Click here!</h3></a>
+</div>
+
+<div class="row">
 {% for image in site.static_files %}
   {% if image.path contains 'assets/images/thumbssfw' %}
     <div class="col"><a href="/{{ image.basename }}.html"><img src="{{ image.path }}" alt="{{ image.basename }}" width=250em></a></div>
