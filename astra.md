@@ -6,6 +6,6 @@ title: Astra
 species: Rabbit
 nsfwrefimg: false
 shownsfw: false
-notes: <a href="/nsfw/astra.html">Want to view NSFW?</a>
+notes: <a href="/nsfw/astra">Want to view NSFW?</a>
 ---
 

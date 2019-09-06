@@ -6,5 +6,6 @@ title: Léo
 species: Ferret
 nsfwrefimg: false
 shownsfw: false
+notes: <a href="/nsfw/leo">Want to view NSFW?</a>
 ---
 

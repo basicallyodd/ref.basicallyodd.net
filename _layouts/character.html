@@ -53,6 +53,7 @@ Species: {{ page.species }}
 
 <h2>Art of {{page.charname}}</h2>
 
+<!-- --
 <p>
     {% if page.shownsfw %}
     <a class="btn btn-primary" data-toggle="collapse" href="#nsfw" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -60,6 +61,34 @@ Species: {{ page.species }}
     </a>
     {% endif %}
 </p>
+<!-- -->
+
+<div id="nsfw">
+  {% for image in site.static_files %}
+  {% assign pstring = "assets/images/art/" | append: page.charpath | append: "/nsfw"  %}
+      {% if image.path contains pstring %}
+      {% unless image.path contains 'hide.' or image.path contains '.swf' %}
+      {% assign pp = image.path | replace: '[', '%5B' | replace: ']', '%5D' %}
+      
+      {% assign artistSTR = 'Artist Link Error!`' | split:'`' %}
+      
+      {% if image.path contains '[FA]' %}
+      {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+      {% assign artistSTR = '<a href="https://furaffinity.net/user/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+      {% endif %}
+
+      {% if image.path contains '[Twitter]' %}
+      {% assign artistSTRname = image.path | remove: pstring | remove: "//" | split:" " %}
+      {% assign artistSTR = '<a href="https://twitter.com/' | append: artistSTRname[0] | append: '" target="_blank">' | append: artistSTRname[0] | append: '</a>' %}
+      {% endif %}
+
+      
+      <a href="{{ pp }}" target="_blank"><img width=250em src="{{ pp }}"></a><br>by {{ artistSTR }}<br><br><br>
+      {% endunless %}
+      {% endif %}
+  {% endfor %}
+</div>
+
 
 <div>
     {% for image in site.static_files %}
@@ -96,7 +125,7 @@ Species: {{ page.species }}
         {% endif %}
     {% endfor %}
 </div>
-
+<!-- --
 {% if page.shownsfw %}
 <div class="collapse" id="nsfw">
     {% for image in site.static_files %}
@@ -124,5 +153,6 @@ Species: {{ page.species }}
     {% endfor %}
 </div>
 {% endif %}
+<!-- -->
 
 <br><br><br><br>
